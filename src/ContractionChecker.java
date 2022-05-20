@@ -9,10 +9,19 @@ import java.util.*;
 public class ContractionChecker {
     public static void main(String[] args) {
         try{
-            File text = new File("textfile.txt");
-            Scanner scnr = new Scanner(text);
+            File text = new File("textfile.txt");  //creating file
+            Scanner scnr = new Scanner(text); //creating scanner
+            int count = 0;
+            while(scnr.hasNext()){         //loop iterates through the text file, finding words with apostrophes, if that word is found it is printed along with the word number
+                String word = scnr.next();
+                count++;
+                if(word.contains("'")){
+                    System.out.println("Contraction found : \""+word+"\", it is word "+count+" in the file");
+                }
+            }
+            scnr.close();
         }
-        catch(FileNotFoundException e) {
+        catch(FileNotFoundException e) { //exception handling
             throw new RuntimeException(e);
         }
     }
